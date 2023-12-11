@@ -26,7 +26,7 @@ This project simplifies the process of installing Cursor as a desktop executable
 
 ### What is Cursor IDE?
 
-Cursor IDE is an open-source code editor based on Visual Studio Code and integrated with ChatGPT. Learn more about this project [cursor]([link](https://cursor.sh/)).
+Cursor IDE is an open-source code editor based on Visual Studio Code and integrated with ChatGPT. Learn more about this project [cursor](https://cursor.sh/).
 
 ## How to Use Cursor
 
