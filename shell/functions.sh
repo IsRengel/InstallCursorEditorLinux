@@ -16,7 +16,7 @@ function add_cursor_alias() {
     fi
 
     # Add alias with "&" to run in the background
-    echo 'alias cursor="/opt/cursor/cursor.AppImage > /dev/null 2>&1 &"' >> "$CONFIG_PATH"
+    echo 'alias cursor="/opt/cursor/cursor.AppImage"' >> "$CONFIG_PATH"
     echo "✅ Added alias 'cursor' to $CONFIG_PATH"
 }
 
