@@ -51,4 +51,3 @@ cursor .
         <img src="https://skillicons.dev/icons?i=devto" alt="Dev.to icon">
     </a>
 </p>
-
