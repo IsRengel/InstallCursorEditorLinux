@@ -1,21 +1,5 @@
 #!/bin/bash
 
-function add_cursor_alias() {
-    # Determine the user's shell
-    local SHELL_NAME=$(basename "$SHELL")
-
-    # Set the appropriate configuration file
-    local CONFIG_PATH
-    if [ "$SHELL_NAME" = "bash" ]; then
-        CONFIG_PATH="$HOME/.bashrc"
-    elif [ "$SHELL_NAME" = "zsh" ]; then
-        CONFIG_PATH="$HOME/.zshrc"
-    else
-        echo "Unable to determine the current shell."
-        return 1
-    fi
-}
-
 function download_cursor() {
     # Create the output directory if it doesn't exist
     mkdir -p "$OUTPUT_DIRECTORY"
