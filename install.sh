@@ -12,10 +12,6 @@ source "${REPO_DIR}/shell/functions.sh"
 echo -e "\n${BLUE_DARK}Installing cursor...${NC}"
 download_cursor
 
-# Agregar cursor al PATH en el archivo de configuración apropiado
-echo -e "\n${BLUE_DARK}Define comand line cursor...${NC}"
-add_cursor_alias
-
 # Set up cursor
 echo -e "\n${CYAN}Config cursor...${NC}"
 setup_cursor
