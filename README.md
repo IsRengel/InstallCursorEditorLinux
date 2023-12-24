@@ -22,7 +22,7 @@
 
 ## About Cursor IDE
 
-This project simplifies the process of installing Cursor as a desktop executable application on Linux. It enables you to use Cursor anywhere in your terminal, similar to the `code .` command for Visual Studio Code.
+This project simplifies the process of installing Cursor as a desktop executable application on Linux.
 
 ### What is Cursor IDE?
 
