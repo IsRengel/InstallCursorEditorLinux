@@ -28,16 +28,6 @@ This project simplifies the process of installing Cursor as a desktop executable
 
 Cursor IDE is an open-source code editor based on Visual Studio Code and integrated with ChatGPT. Learn more about this project [cursor](https://cursor.sh/).
 
-## How to Use Cursor
-
-After completing the setup, you can use the `cursor` command to launch Cursor IDE. For example:
-
-```bash
-cursor .
-```
-
-> **Note:** the `cursor .` to open cursor IDE in a folder spesific `cursor` to only open the cursor IDE
-
 <hr/>
 
 <p align="center">
