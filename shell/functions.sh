@@ -14,10 +14,6 @@ function add_cursor_alias() {
         echo "Unable to determine the current shell."
         return 1
     fi
-
-    # Add alias with "&" to run in the background
-    echo 'alias cursor="/opt/cursor/cursor.AppImage"' >> "$CONFIG_PATH"
-    echo "✅ Added alias 'cursor' to $CONFIG_PATH"
 }
 
 function download_cursor() {
