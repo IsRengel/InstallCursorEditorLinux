@@ -1,24 +1,11 @@
 # Setup Install Cursor IDE in Linux
 
 ## How to Start
+Run the following command to initiate the setup process:
 
-1. Run the following command to initiate the setup process:
-
-    ```bash
-    git clone https://github.com/argell10/SetupCursorIDE.git --depth=1 && cd SetupCursorIDE && ./install.sh
-    ```
-
-2. Once the setup is complete, execute the following command based on your terminal:
-
-    - If you are using Bash:
-        ```bash
-        source ~/.bashrc
-        ```
-
-    - If you are using Zsh:
-        ```bash
-        source ~/.zshrc
-        ```
+```bash
+git clone https://github.com/argell10/SetupCursorIDE.git --depth=1 && cd SetupCursorIDE && ./install.sh
+```
 
 ## About Cursor IDE
 
