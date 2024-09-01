@@ -19,7 +19,7 @@ Cursor IDE is an open-source code editor based on Visual Studio Code and integra
 
 <p align="center">
     <a href="https://cursor.sh/">
-        <img src="./assets/icon.svg" alt="Cursor" width="50px">
+        <img src="./assets/cursor.png" alt="Cursor" width="50px">
     </a>
     <a href="https://skillicons.dev">
         <img src="https://skillicons.dev/icons?i=linux,bash" alt="Linux and Bash icons">

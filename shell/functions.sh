@@ -17,8 +17,8 @@ function download_cursor() {
             exit 1
         fi
     fi
-
 }
+
 
 
 function setup_cursor() {
@@ -35,7 +35,7 @@ function setup_cursor() {
         echo -e "${RED}❌ Error moving the file${NC}"
         exit 1
     fi
-    sudo chmod +x /opt/cursor/cursor.AppImage
+    sudo chmod +x /opt/cursor/$FILE_NAME
     sudo chown $USER:$USER /opt/cursor
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✅ Permissions granted successfully to /opt/cursor/cursor.AppImage${NC}"
@@ -47,10 +47,15 @@ function setup_cursor() {
     sudo tee "$DESKTOP_FILE" > /dev/null <<EOF
     [Desktop Entry]
     Name=Cursor
-    Exec=/opt/cursor/cursor.AppImage
-    Icon=/opt/cursor/assets/icon.svg
+    Exec=/opt/cursor/$FILE_NAME
     Type=Application
+    Icon=/opt/cursor/assets/cursor.png
+    StartupWMClass=Cursor
+    X-AppImage-Version=240829epqamqp7h
+    Comment=Cursor is an AI-first coding environment.
+    MimeType=x-scheme-handler/cursor;
     Categories=Development;
+
 EOF
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✅ File $DESKTOP_FILE created successfully.${NC}"
