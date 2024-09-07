@@ -65,6 +65,51 @@ EOF
     fi
 }
 
+
+function setup_update_script() {
+    local UPDATE_SCRIPT="/opt/cursor/update-cursor.sh"
+
+    # Create script of update
+    sudo tee "$UPDATE_SCRIPT" > /dev/null <<EOF
+#!/bin/bash
+APPDIR=/opt/cursor
+APPIMAGE_URL="$URL_CURSOR_DOWN"
+
+wget -O \$APPDIR/$FILE_NAME \$APPIMAGE_URL
+chmod +x \$APPDIR/$FILE_NAME
+EOF
+
+    # permissions to script execution
+    sudo chmod +x "$UPDATE_SCRIPT"
+    echo -e "${GREEN}✅ Update script created at $UPDATE_SCRIPT${NC}"
+}
+
+function setup_systemd_service() {
+    local SERVICE_FILE=~/.config/systemd/user/update-cursor.service
+
+    # Ensure the systemd directory exists
+    mkdir -p ~/.config/systemd/user
+
+    # Create the systemd service file
+    tee "$SERVICE_FILE" > /dev/null <<EOF
+[Unit]
+Description=Update Cursor IDE
+
+[Service]
+ExecStart=/opt/cursor/update-cursor.sh
+Type=oneshot
+
+[Install]
+WantedBy=default.target
+EOF
+
+    # Enable and start the service
+    systemctl --user enable update-cursor.service
+    systemctl --user start update-cursor.service
+
+    echo -e "${GREEN}✅ Systemd service for Cursor IDE updates created and started.${NC}"
+}
+
 remove_files() {
     # Remove the output directory
     rm -r "$OUTPUT_DIRECTORY"
