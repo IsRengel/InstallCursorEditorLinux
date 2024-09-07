@@ -89,5 +89,3 @@ systemctl --user disable update-cursor.service
 ## Learn More
 
 For more details about Cursor IDE and its features, visit the [official website](https://cursor.sh/).
-
-<p align="center"> <a href="https://skillicons.dev"> <img src="https://skillicons.dev/icons?i=linux,bash" alt="Linux and Bash icons"> </a> <a href="https://dev.to/mhbaando/how-to-install-cursor-the-ai-editor-on-linux-41dm"> <img src="https://skillicons.dev/icons?i=devto" alt="Dev.to icon"> </a> </p>
