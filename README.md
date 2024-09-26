@@ -17,7 +17,7 @@ Cursor IDE is an AI-powered code editor, built on the foundations of Visual Stud
 | **Ubuntu**           | 22.04 LTS    | ✅ Compatible      |
 | **Ubuntu**           | 24.04 LTS    | ✅ Compatible     |
 | **Pop!_OS**          | 22.04 LTS    | ✅ Compatible      |
-
+| **Arch Linux**       |       -      | ✅ Compatible      |
 
 ## Prerequisites
 
