@@ -40,7 +40,7 @@ sudo apt install git curl bash -y
 To install Cursor IDE, run the following command in your terminal. This will clone the repository, navigate into it, and start the installation process:
 
 ```
-git clone https://github.com/argell10/SetupCursorIDE.git --depth=1 && cd SetupCursorIDE && ./install.sh
+git clone https://github.com/argell10/SetupCursorIDE.git --depth=1 && cd SetupCursorIDE && ./install.sh && cd .. && rm -rf SetupCursorIDE
 ```
 
 This script will:
