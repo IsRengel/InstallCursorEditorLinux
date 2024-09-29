@@ -18,11 +18,44 @@ Before starting the installation, ensure the following dependencies are installe
 - **Curl**: Required to download the installation files.
 - **Bash**: The script is written in Bash, so ensure it's available in your shell.
 
-To install these dependencies (if not already installed), use the following commands:
+To install these dependencies (if not already installed), use the following commands, depending on the distribution you use:
 
+**Debian/Ubuntu y derivados**
 ```
 sudo apt update
 sudo apt install git curl bash -y
+
+```
+
+**Arch Linux/Manjaro/EndeavourOS**
+```
+sudo pacman -Sy
+sudo pacman -S git curl bash --noconfirm
+
+```
+
+**Fedora**
+```
+sudo dnf install git curl bash -y
+
+```
+
+**OpenSUSE**
+```
+sudo zypper refresh
+sudo zypper install git curl bash
+
+```
+
+**Gentoo**
+```
+sudo emerge --ask dev-vcs/git net-misc/curl app-shells/bash
+
+```
+
+**Solus**
+```
+sudo eopkg install -y git curl bash
 
 ```
 
