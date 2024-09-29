@@ -20,7 +20,7 @@ Before starting the installation, ensure the following dependencies are installe
 
 To install these dependencies (if not already installed), use the following commands, depending on the distribution you use:
 
-**Debian/Ubuntu y derivados**
+**Debian/Ubuntu and derivados**
 ```
 sudo apt update
 sudo apt install git curl bash -y
