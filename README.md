@@ -64,7 +64,7 @@ sudo eopkg install -y git curl bash
 To install Cursor IDE, run the following command in your terminal. This will clone the repository, navigate into it, and start the installation process:
 
 ```
-git clone https://github.com/argell10/InstallCursorEditorLinux.git --depth=1 && cd InstallCursorEditorLinux && ./install.sh && cd .. && rm -rf InstallCursorEditorLinux
+git clone https://github.com/IsRengel/InstallCursorEditorLinux.git --depth=1 && cd InstallCursorEditorLinux && ./install.sh && cd .. && rm -rf InstallCursorEditorLinux
 ```
 
 This script will:
