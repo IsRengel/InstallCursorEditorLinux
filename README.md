@@ -2,24 +2,13 @@
 
 ## Introduction
 
-This guide helps you install **Cursor IDE** as a desktop application on Linux, simplifying the setup process.
+Esta guía le ayuda a instalar **Cursor IA Code Editor** como una aplicación de escritorio en sistemas operativos Linux, independientemente de la distribución que utilice, simplificando el proceso de configuración.
 
 ### What is Cursor IDE?
 
 Cursor IDE is an AI-powered code editor, built on the foundations of Visual Studio Code and enhanced with ChatGPT integration. It offers a rich development experience with AI-based coding assistance. To learn more about Cursor IDE, visit the official [Cursor website](https://cursor.sh/).
 
 <p align="center"> <a href="https://cursor.sh/"> <img src="./assets/cursor.png" alt="Cursor" width="100px"> </a> </p>
-
-# Compatibility of Cursor IDE Setup Script (Tested Systems)
-
-| **Operating System** | **Version**  | **Status**    |
-|----------------------|--------------|---------------|
-| **Ubuntu**           | 22.04 LTS    | ✅ Compatible |
-| **Ubuntu**           | 24.04 LTS    | ✅ Compatible |
-| **Pop!_OS**          | 22.04 LTS    | ✅ Compatible |
-| **Arch Linux**       |       -      | ✅ Compatible |
-| **Deepin OS**        | 20.9         | ✅ Compatible |
-| **Deepin OS**        | 23           | ✅ Compatible |
 
 ## Prerequisites
 
