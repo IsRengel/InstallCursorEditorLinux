@@ -88,11 +88,11 @@ If you'd like to change the installation directory or other settings, you can mo
 The installation process configures a systemd service that checks for and installs the latest updates of Cursor IDE. To manually trigger an update, run the following command:
 
 ```
-systemctl --user start update-cursor.service
+sudo systemctl start update-cursor.service
 ```
 To enable automatic updates at startup:
 ```
-systemctl --user enable update-cursor.service
+sudo systemctl enable update-cursor.service
 ```
 
 ## Uninstallation
@@ -101,13 +101,13 @@ To completely remove Cursor IDE from your system, run:
 
 ```
 sudo rm -rf /opt/cursor
-rm ~/.config/systemd/user/update-cursor.service
+rm ~/.config/systemd/system/update-cursor.service
 ```
 
 Additionally, you can disable the systemd update service:
 
 ```
-systemctl --user disable update-cursor.service
+sudo systemctl disable update-cursor.service
 ```
 
 ## Learn More

@@ -43,11 +43,20 @@ function setup_cursor() {
         echo -e "${RED}❌ Error granting permissions${NC}"
         exit 1
     fi
+    # Extract the appimage
+    cd /opt/cursor && \
+	sudo /opt/cursor/$FILE_NAME --appimage-extract && \
+	sudo chown -R $USER:$USER /opt/cursor/squashfs-root && \
+	sudo chown root:root /opt/cursor/squashfs-root/chrome-sandbox && \
+	sudo chmod 4755 /opt/cursor/squashfs-root/chrome-sandbox
+    export EXE_PATH="/opt/cursor/squashfs-root/cursor"
+    cd $CURRENT_DIRECTORY
+    echo -e "${GREEN} Extracted cursor to: '${EXE_PATH}'${NC}"
     # Create .desktop file
     sudo tee "$DESKTOP_FILE" > /dev/null <<EOF
     [Desktop Entry]
     Name=Cursor
-    Exec=/opt/cursor/$FILE_NAME
+    Exec=$EXE_PATH
     Type=Application
     Icon=/opt/cursor/assets/cursor.png
     StartupWMClass=Cursor
@@ -77,6 +86,12 @@ APPIMAGE_URL="$URL_CURSOR_DOWN"
 
 wget -O \$APPDIR/$FILE_NAME \$APPIMAGE_URL
 chmod +x \$APPDIR/$FILE_NAME
+# Extract the appimage
+cd \$APPDIR && sudo \$APPDIR/$FILE_NAME --appimage-extract && \
+    sudo chown $USER:$USER \$APPDIR/squashfs-root && \
+    sudo chown root:root \$APPDIR/squashfs-root/chrome-sandbox && \
+    sudo chmod 4755 \$APPDIR/squashfs-root/chrome-sandbox && \
+    cd -
 EOF
 
     # permissions to script execution
@@ -85,10 +100,10 @@ EOF
 }
 
 function setup_systemd_service() {
-    local SERVICE_FILE=~/.config/systemd/user/update-cursor.service
+    local SERVICE_FILE=~/.config/systemd/system/update-cursor.service
 
     # Ensure the systemd directory exists
-    mkdir -p ~/.config/systemd/user
+    mkdir -p ~/.config/systemd/system
 
     # Create the systemd service file
     tee "$SERVICE_FILE" > /dev/null <<EOF
@@ -104,8 +119,8 @@ WantedBy=default.target
 EOF
 
     # Enable and start the service
-    systemctl --user enable update-cursor.service
-    systemctl --user start update-cursor.service
+    sudo systemctl enable $SERVICE_FILE
+    sudo systemctl start update-cursor.service
 
     echo -e "${GREEN}✅ Systemd service for Cursor IDE updates created and started.${NC}"
 }
