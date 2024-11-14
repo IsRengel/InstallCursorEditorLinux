@@ -1,10 +1,10 @@
-# Setup: Install Cursor IA Code Editor on Linux
+# Setup: Install Cursor AI Code Editor on Linux
 
 ## Introduction
 
-This guide helps you install **Cursor IA Code Editor** as a desktop application on Linux operating systems, regardless of which distribution you use, simplifying the setup process.
+This guide helps you install **Cursor AI Code Editor** as a desktop application on Linux operating systems, regardless of which distribution you use, simplifying the setup process.
 
-### What is Cursor IA Code Editor?
+### What is Cursor AI Code Editor?
 
 Cursor IDE is an AI-powered code editor, built on the foundations of Visual Studio Code and enhanced with ChatGPT integration. It offers a rich development experience with AI-based coding assistance. To learn more about Cursor IDE, visit the official [Cursor website](https://cursor.sh/).
 
