@@ -21,6 +21,7 @@ Before starting the installation, ensure the following dependencies are installe
 To install these dependencies (if not already installed), use the following commands, depending on the distribution you use:
 
 **Debian/Ubuntu and derivados**
+
 ```
 sudo apt update
 sudo apt install git curl bash -y
@@ -28,6 +29,7 @@ sudo apt install git curl bash -y
 ```
 
 **Arch Linux/Manjaro/EndeavourOS**
+
 ```
 sudo pacman -Sy
 sudo pacman -S git curl bash --noconfirm
@@ -35,12 +37,14 @@ sudo pacman -S git curl bash --noconfirm
 ```
 
 **Fedora**
+
 ```
 sudo dnf install git curl bash -y
 
 ```
 
 **OpenSUSE**
+
 ```
 sudo zypper refresh
 sudo zypper install git curl bash
@@ -48,12 +52,14 @@ sudo zypper install git curl bash
 ```
 
 **Gentoo**
+
 ```
 sudo emerge --ask dev-vcs/git net-misc/curl app-shells/bash
 
 ```
 
 **Solus**
+
 ```
 sudo eopkg install -y git curl bash
 
@@ -73,6 +79,7 @@ This script will:
 2. Set it up as a desktop application.
 3. Create a `.desktop` file for easy access from your applications menu.
 4. Configure an automatic update script using `systemd`.
+
 ### Customizing the Installation
 
 If you'd like to change the installation directory or other settings, you can modify the `install.sh` script before running it. The default installation path is `/opt/cursor/`.
@@ -90,26 +97,41 @@ The installation process configures a systemd service that checks for and instal
 ```
 sudo systemctl start update-cursor.service
 ```
+
 To enable automatic updates at startup:
+
 ```
 sudo systemctl enable update-cursor.service
 ```
 
 ## Uninstallation
 
-To completely remove Cursor IDE from your system, run:
+You can uninstall Cursor IDE using either of these methods:
+
+1. Using the uninstall command:
+
+```
+cursor --uninstall
+```
+
+2. Manually removing the files:
 
 ```
 sudo rm -rf /opt/cursor
-rm ~/.config/systemd/system/update-cursor.service
-```
-
-Additionally, you can disable the systemd update service:
-
-```
+sudo rm -f /usr/local/bin/cursor
+rm ~/.config/systemd/user/update-cursor.service
 sudo systemctl disable update-cursor.service
 ```
 
 ## Learn More
 
 For more details about Cursor IDE and its features, visit the [official website](https://cursor.sh/).
+
+## Command Line Usage
+
+After installation, you can use the `cursor` command from your terminal:
+
+```
+</file>
+
+```
