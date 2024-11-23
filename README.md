@@ -20,6 +20,10 @@ Before starting the installation, ensure the following dependencies are installe
 
 To install these dependencies (if not already installed), use the following commands, depending on the distribution you use:
 
+<details>
+  <summary><strong style="font-size: 1.2em;">Instructions for installing dependencies on your Linux operating system</strong></summary>
+  <br>
+
 **Debian/Ubuntu and derivados**
 
 ```
@@ -64,6 +68,7 @@ sudo emerge --ask dev-vcs/git net-misc/curl app-shells/bash
 sudo eopkg install -y git curl bash
 
 ```
+</details>
 
 ## Installation
 
