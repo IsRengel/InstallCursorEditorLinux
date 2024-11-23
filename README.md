@@ -96,7 +96,6 @@ After installation, you can use the `cursor` command from your terminal:
 
 ```
 cursor --help
-
 ```
 
 ## Automatic Updates
