@@ -90,6 +90,15 @@ If you'd like to change the installation directory or other settings, you can mo
 - **Cross-platform**: Cursor IDE is available on Windows, macOS, and Linux.
 - **VSCode-based**: Built on the familiar interface of Visual Studio Code, making it easy for VSCode users to adapt.
 
+## Command Line Usage
+
+After installation, you can use the `cursor` command from your terminal:
+
+```
+cursor --help
+
+```
+
 ## Automatic Updates
 
 The installation process configures a systemd service that checks for and installs the latest updates of Cursor IDE. To manually trigger an update, run the following command:
@@ -126,12 +135,3 @@ sudo systemctl disable update-cursor.service
 ## Learn More
 
 For more details about Cursor IDE and its features, visit the [official website](https://cursor.sh/).
-
-## Command Line Usage
-
-After installation, you can use the `cursor` command from your terminal:
-
-```
-</file>
-
-```
