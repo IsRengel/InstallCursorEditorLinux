@@ -130,6 +130,13 @@ sudo rm -f /usr/local/bin/cursor
 rm ~/.config/systemd/user/update-cursor.service
 sudo systemctl disable update-cursor.service
 ```
+### Contributors 🤝
+
+Contributions of all kinds are welcome, thanks to all contributors for their contributions!
+
+<a href="https://github.com/IsRengel/InstallCursorEditorLinux/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=IsRengel/InstallCursorEditorLinux" />
+</a>
 
 ## Learn More
 
