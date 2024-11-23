@@ -72,6 +72,15 @@ EOF
         echo -e "${RED}❌ Error creating the file $DESKTOP_FILE${NC}"
         exit 1
     fi
+
+    sudo tee "/usr/local/bin/cursor" > /dev/null < "${CURRENT_DIRECTORY}/shell/cursor-command.sh"
+    sudo chmod +x "/usr/local/bin/cursor"
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}✅ Cursor command installed successfully${NC}"
+    else
+        echo -e "${RED}❌ Error installing cursor command${NC}"
+        exit 1
+    fi
 }
 
 
