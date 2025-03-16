@@ -56,15 +56,17 @@ function setup_cursor() {
     sudo tee "$DESKTOP_FILE" > /dev/null <<EOF
     [Desktop Entry]
     Name=Cursor
-    Exec=$EXE_PATH
+    GenericName=Text Editor
+    Exec=$EXE_PATH %F
     Type=Application
     Icon=/opt/cursor/assets/cursor.png
     StartupWMClass=Cursor
-    X-AppImage-Version=240829epqamqp7h
+    StartupNotify=false
     Comment=Cursor is an AI-first coding environment.
-    MimeType=x-scheme-handler/cursor;
-    Categories=Development;
-
+    MimeType=application/x-cursor-workspace;
+    Categories=TextEditor;Development;IDE;
+    Actions=new-empty-window;
+    Keywords=cursor;vscode;code;
 EOF
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✅ File $DESKTOP_FILE created successfully.${NC}"
