@@ -93,16 +93,28 @@ function setup_update_script() {
     sudo tee "$UPDATE_SCRIPT" > /dev/null <<EOF
 #!/bin/bash
 APPDIR=/opt/cursor
-APPIMAGE_URL="$URL_CURSOR_DOWN"
+API_URL="https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=stable"
 
-wget -O \$APPDIR/$FILE_NAME \$APPIMAGE_URL
-chmod +x \$APPDIR/$FILE_NAME
+# Get the download URL from the API
+APPIMAGE_URL=\$(curl -s "\$API_URL" | grep -o '"downloadUrl":"[^"]*"' | cut -d'"' -f4)
+
+# Extract the version from the URL
+VERSION=\$(echo "\$APPIMAGE_URL" | grep -o 'Cursor-[0-9.]*' | cut -d'-' -f2)
+
+# Download the latest version
+echo "Downloading Cursor version \$VERSION..."
+wget -O "\$APPDIR/cursor-\${VERSION}-x86_64.AppImage" "\$APPIMAGE_URL"
+chmod +x "\$APPDIR/cursor-\${VERSION}-x86_64.AppImage"
+
 # Extract the appimage
-cd \$APPDIR && sudo \$APPDIR/$FILE_NAME --appimage-extract && \
+cd \$APPDIR && sudo "\$APPDIR/cursor-\${VERSION}-x86_64.AppImage" --appimage-extract && \
     sudo chown $USER:$USER \$APPDIR/squashfs-root && \
     sudo chown root:root \$APPDIR/squashfs-root/chrome-sandbox && \
     sudo chmod 4755 \$APPDIR/squashfs-root/chrome-sandbox && \
+    sudo mv \$APPDIR/squashfs-root/AppRun \$APPDIR/squashfs-root/cursor && \
     cd -
+
+echo "Cursor has been updated to version \$VERSION"
 EOF
 
     # permissions to script execution
