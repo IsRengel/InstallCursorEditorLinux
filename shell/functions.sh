@@ -66,7 +66,7 @@ function setup_cursor() {
 	sudo chown root:root /opt/cursor/squashfs-root/chrome-sandbox && \
 	sudo chmod 4755 /opt/cursor/squashfs-root/chrome-sandbox && \
 	sudo mv /opt/cursor/squashfs-root/AppRun /opt/cursor/squashfs-root/cursor
-    export EXE_PATH="/opt/cursor/squashfs-root/cursor"
+    export EXE_PATH="/opt/cursor/squashfs-root/AppRun"
     cd $CURRENT_DIRECTORY
     echo -e "${GREEN}✅ Extracted cursor to: '${EXE_PATH}'${NC}"
     echo -e "${GREEN}ℹ️ All extracted content is located in: /opt/cursor/squashfs-root/${NC}"
