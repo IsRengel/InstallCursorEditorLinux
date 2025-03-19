@@ -66,16 +66,16 @@ function setup_cursor() {
 	sudo chown root:root /opt/cursor/squashfs-root/chrome-sandbox && \
 	sudo chmod 4755 /opt/cursor/squashfs-root/chrome-sandbox && \
 	sudo mv /opt/cursor/squashfs-root/AppRun /opt/cursor/squashfs-root/cursor
-    export EXE_PATH="/opt/cursor/squashfs-root/AppRun"
+    export EXEC_PATH="/opt/cursor/squashfs-root/AppRun"
     cd $CURRENT_DIRECTORY
-    echo -e "${GREEN}✅ Extracted cursor to: '${EXE_PATH}'${NC}"
+    echo -e "${GREEN}✅ Extracted cursor to: '${EXEC_PATH}'${NC}"
     echo -e "${GREEN}ℹ️ All extracted content is located in: /opt/cursor/squashfs-root/${NC}"
     # Create .desktop file
     sudo tee "$DESKTOP_FILE" > /dev/null <<EOF
     [Desktop Entry]
     Name=Cursor
     GenericName=Text Editor
-    Exec=$EXE_PATH %F
+    Exec=$EXEC_PATH %F
     Type=Application
     Icon=/opt/cursor/assets/cursor.png
     StartupWMClass=Cursor
