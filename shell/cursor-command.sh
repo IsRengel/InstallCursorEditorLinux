@@ -1,5 +1,7 @@
 #!/bin/bash
 
+EXEC_PATH="/opt/cursor/squashfs-root/AppRun"
+
 function show_help() {
     echo "Usage: cursor [options] [path]"
     echo
@@ -45,9 +47,9 @@ case "$1" in
         if [ -n "$1" ]; then
             # If path is provided, convert it to absolute path
             ABSOLUTE_PATH=$(readlink -f "$1")
-            nohup /opt/cursor/squashfs-root/cursor "$ABSOLUTE_PATH" >/dev/null 2>&1 &
+            nohup $EXEC_PATH "$ABSOLUTE_PATH" >/dev/null 2>&1 &
         else
-            nohup /opt/cursor/squashfs-root/cursor >/dev/null 2>&1 &
+            nohup $EXEC_PATH >/dev/null 2>&1 &
         fi
         ;;
 esac 
