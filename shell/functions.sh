@@ -4,12 +4,23 @@ function download_cursor() {
     # Create the output directory if it doesn't exist
     mkdir -p "$OUTPUT_DIRECTORY"
 
+    # Get the download URL from the API
+    echo -e "🔍 ${CYAN}Fetching latest Cursor version...${NC}"
+    APPIMAGE_URL=$(curl -s "$URL_CURSOR_DOWN" | grep -o '"downloadUrl":"[^"]*"' | cut -d'"' -f4)
+    
+    # Extract the version from the URL
+    VERSION=$(echo "$APPIMAGE_URL" | grep -o 'Cursor-[0-9.]*' | cut -d'-' -f2)
+    
+    # Set file name and output file dynamically
+    FILE_NAME="cursor-${VERSION}-x86_64.AppImage"
+    OUTPUT_FILE="$OUTPUT_DIRECTORY/$FILE_NAME"
+    
     # Download cursor if it doesn't exist
     if [ -e "$OUTPUT_FILE" ]; then
         echo -e "${GREEN}✅ The file already exists: $OUTPUT_FILE${NC}"
     else
-        echo -e "↓ ${CYAN}Downloading cursor... ${DOWNLOAD_EMOJI}${NC}"
-        curl -o "$OUTPUT_FILE" "$URL_CURSOR_DOWN"
+        echo -e "↓ ${CYAN}Downloading Cursor version $VERSION... ${DOWNLOAD_EMOJI}${NC}"
+        wget -O "$OUTPUT_FILE" "$APPIMAGE_URL"
         if [ $? -eq 0 ]; then
             echo -e "${GREEN}✅ Download completed: $OUTPUT_FILE${NC}"
         else
@@ -17,6 +28,10 @@ function download_cursor() {
             exit 1
         fi
     fi
+    
+    # Export these variables so they're available to other functions
+    export FILE_NAME
+    export OUTPUT_FILE
 }
 
 
@@ -38,20 +53,23 @@ function setup_cursor() {
     sudo chmod +x /opt/cursor/$FILE_NAME
     sudo chown $USER:$USER /opt/cursor
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✅ Permissions granted successfully to /opt/cursor/cursor.AppImage${NC}"
+        echo -e "${GREEN}✅ Permissions granted successfully to /opt/cursor/$FILE_NAME${NC}"
     else
         echo -e "${RED}❌ Error granting permissions${NC}"
         exit 1
     fi
     # Extract the appimage
+    echo -e "${CYAN}Extracting AppImage (this may take a moment)...${NC}"
     cd /opt/cursor && \
-	sudo /opt/cursor/$FILE_NAME --appimage-extract && \
+	sudo /opt/cursor/$FILE_NAME --appimage-extract > /dev/null 2>&1 && \
 	sudo chown -R $USER:$USER /opt/cursor/squashfs-root && \
 	sudo chown root:root /opt/cursor/squashfs-root/chrome-sandbox && \
-	sudo chmod 4755 /opt/cursor/squashfs-root/chrome-sandbox
+	sudo chmod 4755 /opt/cursor/squashfs-root/chrome-sandbox && \
+	sudo mv /opt/cursor/squashfs-root/AppRun /opt/cursor/squashfs-root/cursor
     export EXE_PATH="/opt/cursor/squashfs-root/cursor"
     cd $CURRENT_DIRECTORY
-    echo -e "${GREEN} Extracted cursor to: '${EXE_PATH}'${NC}"
+    echo -e "${GREEN}✅ Extracted cursor to: '${EXE_PATH}'${NC}"
+    echo -e "${GREEN}ℹ️ All extracted content is located in: /opt/cursor/squashfs-root/${NC}"
     # Create .desktop file
     sudo tee "$DESKTOP_FILE" > /dev/null <<EOF
     [Desktop Entry]
@@ -93,16 +111,30 @@ function setup_update_script() {
     sudo tee "$UPDATE_SCRIPT" > /dev/null <<EOF
 #!/bin/bash
 APPDIR=/opt/cursor
-APPIMAGE_URL="$URL_CURSOR_DOWN"
+API_URL="$URL_CURSOR_DOWN"
 
-wget -O \$APPDIR/$FILE_NAME \$APPIMAGE_URL
-chmod +x \$APPDIR/$FILE_NAME
+# Get the download URL from the API
+APPIMAGE_URL=\$(curl -s "\$API_URL" | grep -o '"downloadUrl":"[^"]*"' | cut -d'"' -f4)
+
+# Extract the version from the URL
+VERSION=\$(echo "\$APPIMAGE_URL" | grep -o 'Cursor-[0-9.]*' | cut -d'-' -f2)
+
+# Download the latest version
+echo "Downloading Cursor version \$VERSION..."
+wget -O "\$APPDIR/cursor-\${VERSION}-x86_64.AppImage" "\$APPIMAGE_URL"
+chmod +x "\$APPDIR/cursor-\${VERSION}-x86_64.AppImage"
+
 # Extract the appimage
-cd \$APPDIR && sudo \$APPDIR/$FILE_NAME --appimage-extract && \
+echo "Extracting AppImage (this may take a moment)..."
+cd \$APPDIR && sudo "\$APPDIR/cursor-\${VERSION}-x86_64.AppImage" --appimage-extract > /dev/null 2>&1 && \
     sudo chown $USER:$USER \$APPDIR/squashfs-root && \
     sudo chown root:root \$APPDIR/squashfs-root/chrome-sandbox && \
     sudo chmod 4755 \$APPDIR/squashfs-root/chrome-sandbox && \
+    sudo mv \$APPDIR/squashfs-root/AppRun \$APPDIR/squashfs-root/cursor && \
     cd -
+
+echo "Cursor has been updated to version \$VERSION"
+echo "All extracted content is located in: \$APPDIR/squashfs-root/"
 EOF
 
     # permissions to script execution
