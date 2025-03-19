@@ -12,6 +12,4 @@ readonly DOWNLOAD_EMOJI='\U1F4E2'  # Unicode character for a download emoji
 
 # vars
 readonly OUTPUT_DIRECTORY=~/Cursor
-readonly FILE_NAME=cursor-0.40.3x86_64.AppImage
-readonly OUTPUT_FILE=$OUTPUT_DIRECTORY/$FILE_NAME
-readonly URL_CURSOR_DOWN="https://downloader.cursor.sh/linux/appImage/x64"
+readonly URL_CURSOR_DOWN="https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=stable"
