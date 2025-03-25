@@ -124,9 +124,6 @@ chmod +x "\$APPDIR/cursor-\${VERSION}-x86_64.AppImage"
 echo "Extracting AppImage (this may take a moment)..."
 cd \$APPDIR && sudo "\$APPDIR/cursor-\${VERSION}-x86_64.AppImage" --appimage-extract > /dev/null 2>&1 && \
     sudo chown $USER:$USER \$APPDIR/squashfs-root && \
-    sudo chown root:root \$APPDIR/squashfs-root/chrome-sandbox && \
-    sudo chmod 4755 \$APPDIR/squashfs-root/chrome-sandbox && \
-    sudo mv \$APPDIR/squashfs-root/AppRun \$APPDIR/squashfs-root/cursor && \
     cd -
 
 echo "Cursor has been updated to version \$VERSION"
