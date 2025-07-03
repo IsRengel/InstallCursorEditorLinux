@@ -6,7 +6,7 @@ function download_cursor() {
 
     # Get the download URL from the API
     echo -e "🔍 ${CYAN}Fetching latest Cursor version...${NC}"
-    APPIMAGE_URL=$(curl -s "$URL_CURSOR_DOWN" | grep -o '"downloadUrl":"[^"]*"' | cut -d'"' -f4)
+    APPIMAGE_URL=$(curl -s -L "$URL_CURSOR_DOWN" | grep -o '"downloadUrl":"[^"]*"' | cut -d'"' -f4)
     
     # Extract the version from the URL
     VERSION=$(echo "$APPIMAGE_URL" | grep -o 'Cursor-[0-9.]*' | cut -d'-' -f2)
