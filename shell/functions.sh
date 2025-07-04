@@ -110,7 +110,7 @@ APPDIR=/opt/cursor
 API_URL="$URL_CURSOR_DOWN"
 
 # Get the download URL from the API
-APPIMAGE_URL=\$(curl -s "\$API_URL" | grep -o '"downloadUrl":"[^"]*"' | cut -d'"' -f4)
+APPIMAGE_URL=\$(curl -s -L "\$API_URL" | grep -o '"downloadUrl":"[^"]*"' | cut -d'"' -f4)
 
 # Extract the version from the URL
 VERSION=\$(echo "\$APPIMAGE_URL" | grep -o 'Cursor-[0-9.]*' | cut -d'-' -f2)
