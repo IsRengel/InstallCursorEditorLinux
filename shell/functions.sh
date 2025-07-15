@@ -68,19 +68,19 @@ function setup_cursor() {
     echo -e "${GREEN}ℹ️ All extracted content is located in: /opt/cursor/squashfs-root/${NC}"
     # Create .desktop file
     sudo tee "$DESKTOP_FILE" > /dev/null <<EOF
-    [Desktop Entry]
-    Name=Cursor
-    GenericName=Text Editor
-    Exec=$EXEC_PATH %F
-    Type=Application
-    Icon=/opt/cursor/assets/cursor.png
-    StartupWMClass=Cursor
-    StartupNotify=false
-    Comment=Cursor is an AI-first coding environment.
-    MimeType=application/x-cursor-workspace;
-    Categories=TextEditor;Development;IDE;
-    Actions=new-empty-window;
-    Keywords=cursor;vscode;code;
+[Desktop Entry]
+Name=Cursor
+GenericName=Text Editor
+Exec=$EXEC_PATH %F
+Type=Application
+Icon=/opt/cursor/assets/cursor.png
+StartupWMClass=Cursor
+StartupNotify=false
+Comment=Cursor is an AI-first coding environment.
+MimeType=application/x-cursor-workspace;
+Categories=TextEditor;Development;IDE;
+Actions=new-empty-window;
+Keywords=cursor;vscode;code;
 EOF
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✅ File $DESKTOP_FILE created successfully.${NC}"
